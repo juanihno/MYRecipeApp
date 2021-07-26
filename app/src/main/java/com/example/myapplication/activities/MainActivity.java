@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignIn=(Button) findViewById(R.id.btnSignIn);
         btnSignUp=(Button) findViewById(R.id.btnSignup);
 
+
         db= new MyRecipeDBHelper(this);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {

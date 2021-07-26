@@ -43,7 +43,7 @@ public class LogInActivity extends AppCompatActivity {
                     if (result==true){
                         Toast.makeText(LogInActivity.this,"valid credentials",Toast.LENGTH_LONG).show();
 
-                        Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent= new Intent(getApplicationContext(), AddScrollingActivity.class);
                         startActivity(intent);
 
                 }
