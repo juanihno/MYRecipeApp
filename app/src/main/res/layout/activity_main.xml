@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".activities.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageview"
+
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:gravity="center"
+        android:textColorHint="#ad5850"
+        android:textSize="25dp"
+        android:background="@color/white"
+        android:layout_below="@+id/imageview"/>
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Password"
+        android:textColorHint="#ad5850"
+        android:layout_marginTop="50dp"
+        android:textSize="25dp"
+        android:background="@color/white"
+        android:layout_below="@+id/username"/>
+    <EditText
+        android:id="@+id/repassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Re enter Password"
+        android:textColorHint="#ad5850"
+        android:background="@color/white"
+        android:layout_marginTop="50dp"
+        android:textSize="25dp"
+        android:layout_below="@+id/password"/>
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:layout_below="@+id/repassword"
+        android:backgroundTint="#ad5850"
+        android:textSize="25dp"
+        android:layout_marginTop="100dp" />
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:layout_below="@+id/btnSignup"
+        android:backgroundTint="#ad5850"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>
