@@ -41,9 +41,11 @@ public class LogInActivity extends AppCompatActivity {
                 else{
                     Boolean result =db.checkUserPassword(user,pass);
                     if (result==true){
+
                         Toast.makeText(LogInActivity.this,"valid credentials",Toast.LENGTH_LONG).show();
 
-                        Intent intent= new Intent(getApplicationContext(), AddScrollingActivity.class);
+
+                        Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
 
                 }

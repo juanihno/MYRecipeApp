@@ -15,7 +15,15 @@
         android:text="Welcome home"
         android:textColor="@color/white"
         android:textSize="35dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-119dp" />
+        tools:layout_editor_absoluteX="-113dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/createNewRecipeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Recipe"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="503dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
