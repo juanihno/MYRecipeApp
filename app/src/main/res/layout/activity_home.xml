@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background"
+    android:background="@drawable/main"
+    android:padding="10dp"
     tools:context=".activities.HomeActivity">
-
-    <TextView
-        android:id="@+id/dificultyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Welcome home"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        tools:layout_editor_absoluteX="-113dp"
-        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/createNewRecipeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Recipe"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="503dp" />
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="31dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createNewRecipeButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="74dp"
+        android:text="Discover new recipes" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_marginBottom="-174dp"
+        android:text="Favourites" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button8"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="-207dp"
+        android:text="Surprise me" />
+
+</RelativeLayout>

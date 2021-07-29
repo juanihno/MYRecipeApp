@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -26,16 +27,28 @@ public class HomeActivity extends AppCompatActivity {
     private DataService recipeDataService;
     private View rootView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //Intent intent = getIntent();
+        //Long userId=intent.getLongExtra("USER_ID", 0);
+        //String str=Long.toString(userId);
+        Long userId = getIntent().getLongExtra("ID",0);
+
+
         Button createNewRecipeButton=findViewById(R.id.createNewRecipeButton);
         createNewRecipeButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent  goToAddCreateRecipe = new Intent(HomeActivity.this, AddScrollingActivity.class);
+                goToAddCreateRecipe.putExtra("ID", userId);
+
                 startActivityForResult(goToAddCreateRecipe,ADD_RECIPE_ACTIVITY_CODE);
+                Toast.makeText(HomeActivity.this,"UserId is"+userId,Toast.LENGTH_LONG).show();
+
             }
         });
         recipeDataService= new DataService();

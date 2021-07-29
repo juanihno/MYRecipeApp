@@ -39,6 +39,7 @@ public class AddScrollingActivity extends AppCompatActivity {
 
     private Recipe recipe;
     private Integer difficultyValue = 0;
+    private Long userId;
 
 
 
@@ -46,6 +47,8 @@ public class AddScrollingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_scrolling);
+        //Long userId = getIntent().getLongExtra("ID",0);
+
 
         recipeNameEdiText = findViewById(R.id.recipeNameEditText);
         recipeDescriptionEditText = findViewById(R.id.recipeDescriptionEditText);
@@ -108,6 +111,7 @@ public class AddScrollingActivity extends AppCompatActivity {
         recipe.setName(name);
         recipe.setDescription(description);
         recipe.setDifficulty(difficultyValue);
+        //recipe.setUserId(userId);
 
         //set the intent to return the monster to the caller activity
 

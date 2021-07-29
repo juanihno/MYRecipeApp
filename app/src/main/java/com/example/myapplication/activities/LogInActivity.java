@@ -3,6 +3,7 @@ package com.example.myapplication.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class LogInActivity extends AppCompatActivity {
     EditText username, password;
     Button btnLogIn;
     MyRecipeDBHelper db;
+    Cursor cursor;
 
 
     @Override
@@ -41,18 +43,33 @@ public class LogInActivity extends AppCompatActivity {
                 else{
                     Boolean result =db.checkUserPassword(user,pass);
                     if (result==true){
+                        Toast.makeText(LogInActivity.this,"valid credentials",Toast.LENGTH_LONG).show();
+                            Intent accountsIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Long userId=db.getUserId(user);
+                            accountsIntent.putExtra("ID", userId);
+                            startActivity(accountsIntent);
+                        } else {
+                        Toast.makeText(LogInActivity.this,"Invalid credentials",Toast.LENGTH_LONG).show();
+                        }
 
                         Toast.makeText(LogInActivity.this,"valid credentials",Toast.LENGTH_LONG).show();
+                        //String userId=db.getUserId(user, pass);
+                        //db.getUserId(user,pass);
+                        //Long userId = cursor.getLong(0);
+                        //Long userId=db.getUserId(user,pass);
 
 
-                        Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
+                        //Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
+                        //String userId=db.getUserId(user, pass);
+                    //intent.putExtra("USER_ID", userId);
 
-                }
-                    else {
-                        Toast.makeText(LogInActivity.this,"Invalid credentials",Toast.LENGTH_LONG).show();
+                        //startActivity(intent);
 
-                    }
+                //}
+                    //else {
+                        //Toast.makeText(LogInActivity.this,"Invalid credentials",Toast.LENGTH_LONG).show();
+
+                    //}
                 }
 
             }
