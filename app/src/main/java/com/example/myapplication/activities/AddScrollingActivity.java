@@ -1,27 +1,36 @@
 package com.example.myapplication.activities;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
-import com.example.myapplication.database.MyRecipeDBHelper;
 import com.example.myapplication.entities.Recipe;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 
-import com.example.myapplication.databinding.ActivityAddScrollingBinding;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class AddScrollingActivity extends AppCompatActivity {
 
@@ -29,6 +38,7 @@ public class AddScrollingActivity extends AppCompatActivity {
     //SeekBar difficultySeekBar;
     //private Integer difficultyValue=0;
     //private Recipe recipe;
+    Integer REQUEST_CAMERA=1, SELECT_FILE=0;
 
 
     private EditText recipeNameEdiText;
@@ -36,10 +46,13 @@ public class AddScrollingActivity extends AppCompatActivity {
     private SeekBar difficultySeekBar;
     private MaterialButton cancelRecipeButton;
     private MaterialButton addRecipeButton;
+    private Button cameraButton;
+    private ImageView viewImage;
+
+
 
     private Recipe recipe;
     private Integer difficultyValue = 0;
-    private Long userId;
 
 
 
@@ -47,19 +60,29 @@ public class AddScrollingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_scrolling);
-        //Long userId = getIntent().getLongExtra("ID",0);
+        Long userId = getIntent().getLongExtra("ID",0);
 
 
-        recipeNameEdiText = findViewById(R.id.recipeNameEditText);
-        recipeDescriptionEditText = findViewById(R.id.recipeDescriptionEditText);
-        difficultySeekBar = findViewById(R.id.dificultySeekBar);
-        cancelRecipeButton = findViewById(R.id.cancelAddRecipeButton);
-        addRecipeButton = findViewById(R.id.addRecipeButton);
+        recipeNameEdiText = findViewById(R.id.recipeEditNameEditText);
+        recipeDescriptionEditText = findViewById(R.id.recipeEditDescription);
+        difficultySeekBar = findViewById(R.id.editDificultySeekBar);
+        cancelRecipeButton = findViewById(R.id.cancelEditRecipeButton);
+        addRecipeButton = findViewById(R.id.addEditRecipeButton);
+        cameraButton = findViewById(R.id.cameraEditRecipeButton);
+        viewImage=findViewById(R.id.imageViewEditRecipe);
+
 
 
         //addRecipeButton=(MaterialButton)findViewById(R.id.addRecipeButton);
         //difficultySeekBar=(SeekBar)findViewById(R.id.dificultySeekBar);
 
+        viewImage=(ImageView)findViewById(R.id.imageViewEditRecipe);
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
         cancelRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +117,59 @@ public class AddScrollingActivity extends AppCompatActivity {
     }
 
 
+
+    private void selectImage(){
+
+        final CharSequence[] items={"Camera","Gallery", "Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddScrollingActivity.this);
+        builder.setTitle("Add Image");
+
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (items[i].equals("Camera")) {
+
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, REQUEST_CAMERA);
+
+                } else if (items[i].equals("Gallery")) {
+
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    //startActivityForResult(intent.createChooser(intent, "Select File"), SELECT_FILE);
+                    startActivityForResult(intent, SELECT_FILE);
+
+                } else if (items[i].equals("Cancel")) {
+                    dialogInterface.dismiss();
+                }
+            }
+        });
+        builder.show();
+
+    }
+    @Override
+    public  void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode,data);
+
+        if(resultCode== Activity.RESULT_OK){
+
+            if(requestCode==REQUEST_CAMERA){
+
+                Bundle bundle = data.getExtras();
+                final Bitmap bmp = (Bitmap) bundle.get("data");
+                viewImage.setImageBitmap(bmp);
+
+            }else if(requestCode==SELECT_FILE){
+
+                Uri selectedImageUri = data.getData();
+                viewImage.setImageURI(selectedImageUri);
+            }
+
+        }
+    }
+
     private void add(View v) {
 
         String name=recipeNameEdiText.getText().toString();
@@ -107,11 +183,13 @@ public class AddScrollingActivity extends AppCompatActivity {
             return;
         }
         String description=recipeDescriptionEditText.getText().toString().trim();
+        Long userId = getIntent().getLongExtra("ID",0);
+
         Recipe recipe=new Recipe();
         recipe.setName(name);
         recipe.setDescription(description);
         recipe.setDifficulty(difficultyValue);
-        //recipe.setUserId(userId);
+        recipe.setUserId(userId);
 
         //set the intent to return the monster to the caller activity
 

@@ -7,16 +7,8 @@
     android:fitsSystemWindows="true"
     android:background="#D67D41"
 
-    tools:context=".activities.AddScrollingActivity">
+    tools:context=".activities.EditRecipeActivity">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-
-    <include layout="@layout/content_scrolling" />
+    <include layout="@layout/content_edit_recipe" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

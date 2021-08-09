@@ -9,6 +9,8 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.database.MyRecipeDBHelper;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //we set back the original AppTheme, to stop showing the splash as background image of this activity
+        setTheme(R.style.Theme_MyApplication);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.username);
@@ -80,6 +84,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
     }}

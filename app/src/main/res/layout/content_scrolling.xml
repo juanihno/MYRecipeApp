@@ -13,18 +13,16 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/cameraEditRecipeButton"
             android:layout_width="109dp"
             android:layout_height="42dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="4dp"
             android:text="CAMERA"
-            app:layout_constraintBottom_toTopOf="@+id/addRecipeButton"
+            app:layout_constraintBottom_toTopOf="@+id/addEditRecipeButton"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintHorizontal_bias="0.473"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewEditRecipe"
+            app:layout_constraintTop_toBottomOf="@+id/editDificultySeekBar" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -52,7 +50,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/recipeNameEditText"
+                android:id="@+id/recipeEditNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -71,13 +69,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/recipeDescriptionEditText"
+                android:id="@+id/recipeEditDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <SeekBar
-            android:id="@+id/dificultySeekBar"
+            android:id="@+id/editDificultySeekBar"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="0dp"
             android:layout_height="32dp"
@@ -95,52 +93,39 @@
             android:layout_height="32dp"
             android:text="Dificulty"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/dificultySeekBar"
+            app:layout_constraintEnd_toStartOf="@+id/editDificultySeekBar"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/dificultySeekBar" />
+            app:layout_constraintTop_toTopOf="@+id/editDificultySeekBar" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageViewEditRecipe"
             android:layout_width="124dp"
             android:layout_height="94dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="37dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/cancelAddRecipeButton"
+            app:layout_constraintBottom_toTopOf="@+id/cancelEditRecipeButton"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/dificultyTextView"
             app:layout_constraintVertical_bias="0.0"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="109dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="39dp"
-            android:layout_marginBottom="120dp"
-            android:text="GALERY"
-            app:layout_constraintBottom_toTopOf="@+id/addRecipeButton"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintHorizontal_bias="0.473"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/dificultySeekBar" />
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancelAddRecipeButton"
+            android:id="@+id/cancelEditRecipeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="Cancel"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/addRecipeButton"
+            app:layout_constraintEnd_toStartOf="@+id/addEditRecipeButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/addRecipeButton" />
+            app:layout_constraintTop_toTopOf="@+id/addEditRecipeButton" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/addRecipeButton"
+            android:id="@+id/addEditRecipeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -151,7 +136,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cancelAddRecipeButton" />
+            app:layout_constraintStart_toEndOf="@+id/cancelEditRecipeButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
