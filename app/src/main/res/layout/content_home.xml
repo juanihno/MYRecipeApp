@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.HomeActivity"
+    tools:showIn="@layout/activity_home_scrolling">
+
+    <ImageView
+        android:id="@+id/myRecipesimageView"
+        android:layout_width="209dp"
+
+
+        android:layout_height="221dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:onClick="myRecipesImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/b1" />
+
+    <ImageView
+        android:id="@+id/imageViewDiscover"
+        android:layout_width="223dp"
+        android:layout_height="246dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:onClick="discoverImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRecipesimageView"
+        app:srcCompat="@drawable/b2" />
+
+    <ImageView
+        android:id="@+id/imageViewSurpriseMe "
+        android:layout_width="213dp"
+        android:layout_height="221dp"
+        android:layout_marginTop="152dp"
+        android:onClick="surpriseMeImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toEndOf="@+id/myRecipesimageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/b3" />
+
+    <ImageView
+        android:id="@+id/imageViewCreateNew"
+        android:layout_width="192dp"
+
+        android:layout_height="219dp"
+        android:layout_marginTop="124dp"
+        android:onClick="createImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSurpriseMe "
+        app:srcCompat="@drawable/create_recipe" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
