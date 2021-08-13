@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">My Recipe</string>
     <string name="title_activity_add_recipe_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -94,6 +94,8 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="title_activity_add_scrolling">ScrollingActivity</string>
     <string name="title_activity_home_scrolling">ScrollingActivity</string>
-    <string name="title_activity_rating_scrolling">ScrollingActivity</string>
+    <string name="title_activity_rating_scrolling">Rate me</string>
+    <string name="title_activity_edit_recipe">Edit your recipe</string>
+
     <string name="title_activity_random_scrolling">ScrollingActivity</string>
 </resources>

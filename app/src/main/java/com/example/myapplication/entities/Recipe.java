@@ -1,6 +1,7 @@
 package com.example.myapplication.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Recipe implements Serializable {
     public static final String RECIPE_KEY="recipe_key";
@@ -16,7 +17,7 @@ public class Recipe implements Serializable {
     private String name;
     private String description;
     private Integer difficulty;
-    public String imageFilename;
+    public byte[] imageFilename;
     private Integer votes;
     private Integer stars;
     private Long userId;
@@ -35,7 +36,7 @@ public class Recipe implements Serializable {
         this.userId= userId;
     }*/
 
-    public Recipe(Long id, String name, String description, Integer difficulty, String imageFileName, Integer votes, Integer stars ,Long userId) {
+    public Recipe(Long id, String name, String description, Integer difficulty, byte[] imageFileName, Integer votes, Integer stars ,Long userId) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -45,6 +46,7 @@ public class Recipe implements Serializable {
         this.stars = stars;
         this.userId= userId;
     }
+
 
     @Override
     public String toString() {
@@ -99,11 +101,11 @@ public class Recipe implements Serializable {
         this.difficulty = difficulty;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return imageFilename;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.imageFilename = image;
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,50 +7,67 @@
     android:padding="10dp"
     android:background="@drawable/loginbackgroundclear"
     tools:context=".activities.MainActivity">
-
-    <ImageView
-        android:id="@+id/imageviewLogIn"
-
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/logo_con_fondo_blanco"
-        android:scaleType="fitStart" />
-
-    <EditText
-        android:id="@+id/usernameLogIn"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageviewLogIn"
-        android:layout_marginTop="-22dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:hint="Username"
-        android:textColorHint="#ad5850"
-        android:textSize="25dp" />
+        android:minHeight="720dp">
 
-    <EditText
-        android:id="@+id/passwordLogIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Password"
-        android:textColorHint="#ad5850"
-        android:layout_marginTop="80dp"
-        android:textSize="25dp"
-        android:background="@color/white"
-        android:layout_below="@+id/usernameLogIn"/>
+        <ImageView
+            android:id="@+id/imageviewLogIn"
 
-    <Button
-        android:id="@+id/btnLogIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordLogIn"
-        android:layout_marginTop="102dp"
-        android:backgroundTint="#ad5850"
-        android:text="Log In"
-        android:textAllCaps="false"
-        android:textSize="25dp" />
+            android:layout_width="390dp"
+            android:layout_height="126dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/logo_con_fondo_blanco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/usernameLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageviewLogIn"
+            android:layout_marginTop="108dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="Username"
+            android:textColorHint="#ad5850"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageviewLogIn" />
+
+        <EditText
+            android:id="@+id/passwordLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usernameLogIn"
+            android:layout_marginTop="44dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="Password"
+            android:textColorHint="#ad5850"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usernameLogIn" />
+
+        <Button
+            android:id="@+id/btnLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/passwordLogIn"
+            android:layout_marginTop="160dp"
+            android:backgroundTint="#ad5850"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLogIn" />
 
 
-</RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>

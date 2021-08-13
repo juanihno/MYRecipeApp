@@ -1,5 +1,7 @@
 package com.example.myapplication.activities;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
@@ -18,6 +20,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +31,7 @@ public class RandomScrollingActivity extends AppCompatActivity {
     RatingBar ratingBar;
     Long randomId;
     int size;
+    ImageView recipeImageView;
 
     private List<Recipe> recipes;
 
@@ -44,10 +48,11 @@ public class RandomScrollingActivity extends AppCompatActivity {
         recipes=recipeDataService.getRecipes();
         size= recipes.size();
 
-        Random ran = new Random();
+       /* Random ran = new Random();
         int value = ran.nextInt(size) + 1;
-        Recipe recipe=recipeDataService.getRecipe((long) value);
-        ImageView recipeImageView = findViewById(R.id.recipeImageViewRandomActivity);
+        Recipe recipe=recipeDataService.getRecipe((long) value);*/
+        Recipe recipe=recipeDataService.getRandomRecipe();
+        recipeImageView = findViewById(R.id.recipeImageViewRandomActivity);
         TextView recipeNameTextView = findViewById(R.id.recipeNameTextViewRandomActivity);
         TextView recipeDescriptionTextView = findViewById(R.id.recipeDescriptionTextViewRandomActivity);
 
@@ -56,10 +61,19 @@ public class RandomScrollingActivity extends AppCompatActivity {
         recipeNameTextView.setText(recipe.getName());
         recipeDescriptionTextView.setText(recipe.getDescription());
 
+
         ratingBar.setProgress(recipe.getDifficulty());
-        View rootView = recipeImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(recipe.imageFilename , "drawable" , rootView.getContext().getPackageName()) ;
-        recipeImageView.setImageResource(resID);
+        byte[] bitmapbytes=recipe.getImage();
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inDensity = 50;
+        opt.inTargetDensity = 50;
+        Bitmap bitmap= (BitmapFactory.decodeStream(new ByteArrayInputStream(bitmapbytes), null, opt));
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapbytes , 0, bitmapbytes .length);
+        this.recipeImageView.setImageBitmap(bitmap);
+
+        //View rootView = recipeImageView.getRootView();
+        //int resID = rootView.getResources().getIdentifier(recipe.imageFilename , "drawable" , rootView.getContext().getPackageName()) ;
+        //recipeImageView.setImageResource(resID);
 
 
 

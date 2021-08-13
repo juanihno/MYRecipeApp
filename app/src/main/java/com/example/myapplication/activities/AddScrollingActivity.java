@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
+import com.example.myapplication.database.MyRecipeDBHelper;
 import com.example.myapplication.entities.Recipe;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,6 +28,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -51,8 +54,10 @@ public class AddScrollingActivity extends AppCompatActivity {
 
 
 
+
     private Recipe recipe;
     private Integer difficultyValue = 0;
+
 
 
 
@@ -157,9 +162,17 @@ public class AddScrollingActivity extends AppCompatActivity {
 
             if(requestCode==REQUEST_CAMERA){
 
+                MyRecipeDBHelper db=new MyRecipeDBHelper(this);
+
                 Bundle bundle = data.getExtras();
-                final Bitmap bmp = (Bitmap) bundle.get("data");
-                viewImage.setImageBitmap(bmp);
+                final Bitmap photo = (Bitmap) bundle.get("data");
+                viewImage.setImageBitmap(photo);
+                /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                recipe.setImage(byteArray);
+
+                db.insert(byteArray);*/
 
             }else if(requestCode==SELECT_FILE){
 
@@ -182,14 +195,25 @@ public class AddScrollingActivity extends AppCompatActivity {
             recipeNameEdiText.requestFocus();
             return;
         }
+        if (viewImage.getDrawable() == null){
+            Snackbar.make(v,"image is required", Snackbar.LENGTH_SHORT).show();
+        return;
+        }
+
         String description=recipeDescriptionEditText.getText().toString().trim();
         Long userId = getIntent().getLongExtra("ID",0);
+
 
         Recipe recipe=new Recipe();
         recipe.setName(name);
         recipe.setDescription(description);
         recipe.setDifficulty(difficultyValue);
         recipe.setUserId(userId);
+        Bitmap bm=((BitmapDrawable)viewImage.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        recipe.setImage(byteArray);
 
         //set the intent to return the monster to the caller activity
 

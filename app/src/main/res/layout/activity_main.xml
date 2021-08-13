@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,69 +8,127 @@
     android:background="@drawable/loginbackgroundclear"
     tools:context=".activities.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageview"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="720dp"><![CDATA[
 
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitStart"
-        android:src="@drawable/logo_con_fondo_blanco" />
-    />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:gravity="center"
-        android:textColorHint="#ad5850"
-        android:textSize="25dp"
-        android:background="@color/white"
-        android:layout_below="@+id/imageview"/>
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Password"
-        android:textColorHint="#ad5850"
-        android:layout_marginTop="50dp"
-        android:textSize="25dp"
-        android:background="@color/white"
-        android:layout_below="@+id/username"/>
-    <EditText
-        android:id="@+id/repassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Re enter Password"
-        android:textColorHint="#ad5850"
-        android:background="@color/white"
-        android:layout_marginTop="50dp"
-        android:textSize="25dp"
-        android:layout_below="@+id/password"/>
-    <Button
-        android:id="@+id/btnSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textAllCaps="false"
-        android:layout_below="@+id/repassword"
-        android:backgroundTint="#ad5850"
-        android:textSize="25dp"
-        android:layout_marginTop="100dp" />
-
-    <Button
-        android:id="@+id/btnSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:textAllCaps="false"
-        android:layout_below="@+id/btnSignup"
-        android:backgroundTint="#ad5850"
-        android:textSize="25dp"
-        android:layout_marginTop="20dp"
         />
 
-</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ]]>
+
+        <ImageView
+            android:id="@+id/imageview"
+
+            android:layout_width="387dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/logo_con_fondo_blanco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageview"
+            android:layout_marginTop="108dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="Username"
+            android:textColorHint="#ad5850"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_marginTop="28dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="Password"
+            android:textColorHint="#ad5850"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username" />
+
+        <EditText
+            android:id="@+id/repassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="Re enter Password"
+            android:textColorHint="#ad5850"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/repassword"
+            android:layout_marginTop="48dp"
+            android:backgroundTint="#ad5850"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repassword" />
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnSignup"
+            android:layout_marginTop="56dp"
+            android:backgroundTint="#ad5850"
+            android:text="Sign In"
+            android:textAllCaps="false"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

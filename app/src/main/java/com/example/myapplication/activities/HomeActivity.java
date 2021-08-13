@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 //load data from database
         recipeDataService= new DataService();
         recipeDataService.init(this);
-        //rootView=findViewById(R.id.createNewRecipeButton).getRootView();
+        rootView=findViewById(R.id.imageViewCreateNew).getRootView();
 
 
     }
@@ -65,6 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         if(requestCode == ADD_RECIPE_ACTIVITY_CODE){
             if(resultCode == RESULT_OK){
                 addRecipe(data);
+
             }
         }
 

@@ -121,6 +121,8 @@ public class ShowUserOwnRecipesActivity extends AppCompatActivity implements OnR
                     if(position >= 0){
                         //recipe was found
                         recipe = recipeDataService.getRecipe(id);
+                        //Boolean result= recipeDataService.update(recipe);
+
                         adapter.replaceItem(position, recipe);
 
                 }

@@ -15,7 +15,9 @@
             android:name=".activities.RandomScrollingActivity"
             android:label="@string/title_activity_random_scrolling"
             android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
-        <activity android:name=".activities.EditRecipeActivity" />
+        <activity android:name=".activities.EditRecipeActivity"
+            android:label="@string/title_activity_rating_scrolling"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".activities.RatingScrollingActivity"
             android:label="@string/title_activity_rating_scrolling"

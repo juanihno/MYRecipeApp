@@ -18,7 +18,7 @@
             android:layout_height="42dp"
             android:layout_marginBottom="4dp"
             android:text="CAMERA"
-            app:layout_constraintBottom_toTopOf="@+id/addEditRecipeButtonEditActivity"
+            app:layout_constraintBottom_toTopOf="@+id/updateEditRecipeButtonEditActivity"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toEndOf="@+id/imageViewEditRecipeEditActivity"
@@ -105,27 +105,27 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="37dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/cancelEditRecipeButtonEditActivity"
+            app:layout_constraintBottom_toTopOf="@+id/deleteEditRecipeButtonEditActivity"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/dificultyTextView"
             app:layout_constraintVertical_bias="0.0"
             tools:srcCompat="@tools:sample/avatars" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancelEditRecipeButtonEditActivity"
+            android:id="@+id/deleteEditRecipeButtonEditActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="Delete"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/addEditRecipeButtonEditActivity"
+            app:layout_constraintEnd_toStartOf="@+id/updateEditRecipeButtonEditActivity"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/addEditRecipeButtonEditActivity" />
+            app:layout_constraintTop_toTopOf="@+id/updateEditRecipeButtonEditActivity" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/addEditRecipeButtonEditActivity"
+            android:id="@+id/updateEditRecipeButtonEditActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -136,7 +136,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cancelEditRecipeButtonEditActivity" />
+            app:layout_constraintStart_toEndOf="@+id/deleteEditRecipeButtonEditActivity" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

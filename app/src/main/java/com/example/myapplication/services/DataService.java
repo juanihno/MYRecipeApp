@@ -26,7 +26,7 @@ DataService {
     }
 
     public Long add(Recipe recipe){
-        return sqlite.insertRecipe(recipe.getName(), recipe.getDescription(), recipe.getDifficulty(),recipe.getUserId());
+        return sqlite.insertRecipe(recipe.getName(), recipe.getDescription(), recipe.getDifficulty(),recipe.getImage(),recipe.getUserId());
     }
 
 
@@ -35,9 +35,11 @@ DataService {
     }
 
     public boolean update(Recipe recipe){
-        return sqlite.updateRecipe(recipe.getId(), recipe.getName(), recipe.getDescription(), recipe.getDifficulty());
+        return sqlite.updateRecipe(recipe.getId(), recipe.getName(), recipe.getDescription(), recipe.getDifficulty(), recipe.getImage());
     }
-
+    public Recipe getRandomRecipe(){
+        return sqlite.getRandomRecipe();
+    }
     public List<Recipe> getRecipes(){
 
         List<Recipe> recipes = sqlite.getRecipes();

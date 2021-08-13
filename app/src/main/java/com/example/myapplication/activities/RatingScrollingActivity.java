@@ -1,6 +1,8 @@
 package com.example.myapplication.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
@@ -19,12 +21,16 @@ import android.widget.TextView;
 
 import com.example.myapplication.databinding.ActivityRatingScrollingBinding;
 
+import java.io.ByteArrayInputStream;
+
 public class RatingScrollingActivity extends AppCompatActivity {
 
     private ActivityRatingScrollingBinding binding;
     RatingBar ratingBar;
     Recipe recipe;
     Integer rate = 0;
+    ImageView recipeImageView;
+
     //private View rootView;
 
 
@@ -37,14 +43,7 @@ public class RatingScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         //enable arrow to come back and send the data to the previous activity(recyclerview)
 
@@ -59,7 +58,7 @@ public class RatingScrollingActivity extends AppCompatActivity {
 
         //rootView = findViewById(android.R.id.content).getRootView();
 
-        ImageView recipeImageView = findViewById(R.id.recipeImageViewRatingActivity);
+        recipeImageView = findViewById(R.id.recipeImageViewRatingActivity);
         TextView recipeNameTextView = findViewById(R.id.recipeNameTextViewRatingActivity);
         TextView recipeDescriptionTextView = findViewById(R.id.recipeDescriptionTextViewRatingActivity);
 
@@ -79,9 +78,16 @@ public class RatingScrollingActivity extends AppCompatActivity {
                 rate = (int) ratingBar.getRating();
             }
         });
-        View rootView = recipeImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(recipe.imageFilename , "drawable" , rootView.getContext().getPackageName()) ;
-        recipeImageView.setImageResource(resID);
+        byte[] bitmapbytes=recipe.getImage();
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inDensity = 50;
+        opt.inTargetDensity = 50;
+        Bitmap bitmap= (BitmapFactory.decodeStream(new ByteArrayInputStream(bitmapbytes), null, opt));
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapbytes , 0, bitmapbytes .length);
+        this.recipeImageView.setImageBitmap(bitmap);
+        //View rootView = recipeImageView.getRootView();
+        //int resID = rootView.getResources().getIdentifier(recipe.imageFilename , "drawable" , rootView.getContext().getPackageName()) ;
+        //recipeImageView.setImageResource(resID);
 
     }
 

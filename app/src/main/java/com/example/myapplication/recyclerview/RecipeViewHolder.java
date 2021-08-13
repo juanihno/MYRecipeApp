@@ -1,5 +1,7 @@
 package com.example.myapplication.recyclerview;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.entities.Recipe;
+
+import java.io.ByteArrayInputStream;
 
 public class RecipeViewHolder extends RecyclerView.ViewHolder {
     //bind the recycler_item_view.xml elements
@@ -46,9 +50,19 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder {
 
 //        https://medium.com/androiddevelopers/understanding-androids-vector-image-format-vectordrawable-ab09e41d5c68
 
-        View rootView = recipeImageView.getRootView();
-        int resID = rootView.getResources().getIdentifier(recipe.getImage(), "drawable", rootView.getContext().getPackageName());
-        recipeImageView.setImageResource(resID);
+        //View rootView = recipeImageView.getRootView();
+        //int resID = rootView.getResources().getIdentifier(recipe.getImage(), "drawable", rootView.getContext().getPackageName());
+        //recipeImageView.setImageResource(resID);
+        byte[] bitmapbytes=recipe.getImage();
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inDensity = 100;
+        opt.inTargetDensity = 100;
+        Bitmap bitmap= (BitmapFactory.decodeStream(new ByteArrayInputStream(bitmapbytes), null, opt));
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapbytes , 0, bitmapbytes .length);
+        this.recipeImageView.setImageBitmap(bitmap);
+
+
+
         this.recipeNameEditText.setText(recipe.getName());
         this.recipeDescriptionEditText.setText(recipe.getDescription());
         this.recipeTotalVotesTextView.setText(recipe.getVotes() + " Votes");
